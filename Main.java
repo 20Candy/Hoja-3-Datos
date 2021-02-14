@@ -1,3 +1,4 @@
+
 /******************************************************************
 @author Carol Arevalo 
 @since 12/02/21
@@ -7,80 +8,85 @@ class main - controlador
 
 import java.util.Scanner;
 import java.util.Random;
-import java.io.File;
-import java.io.FileNotFoundException;
 
-class Main{
+class Main {
 
-	public static void main(String[] args){
+	@SuppressWarnings("unchecked")
+	public static void main(String[] args) {
 
-    //instancias
-    generador g= new generador();
-    Scanner scan = new Scanner(System.in);
-    sorts s= new sorts();
-    Random r = new Random();
-   
-    //generar canditada de datos datos y guarador en txt
-    int cantidad_numeros = r.nextInt(3000) + 10;
-    g.datos(cantidad_numeros);
-   
+		// instancias
+		generador g = new generador();
+		Scanner scan = new Scanner(System.in);
+		sorts s = new sorts();
+		Random r = new Random();
 
-    //lee txt y lo guarda en un array
-    Comparable<Integer>[] datos = new Comparable [cantidad_numeros];
-    datos= g.Read(cantidad_numeros);
+		// generar canditada de datos datos y guarador en txt
+		int cantidad_numeros = r.nextInt(3000) + 10;
+		g.datos(cantidad_numeros);
 
-    //Menu**************************************************************************************************************************
-    int opcion = -1;
-    while (opcion != 6){
+		// lee txt y lo guarda en un array
+		Comparable<Integer>[] datos = new Comparable[cantidad_numeros];
+		datos = g.Read(cantidad_numeros);
 
-        //-----------------------------------------------------------------------------------------------------------------------
-        System.out.println("\n\nBienvenido al programa de sorts");
-        System.out.println("1. BubbleSort");
-        System.out.println("2. GnomeSort");
-        System.out.println("3. QuickSort");
-        System.out.println("4. MergeSort");
-        System.out.println("5. RadixSort");
-        System.out.println("6. Salir\n\n");
-        
-        opcion = scan.nextInt();
-        
-        if (opcion == 1){
+		// Menu**************************************************************************************************************************
+		int opcion = -1;
+		while (opcion != 6) {
 
-            Comparable<Integer>[] datosG= s.BubbleSort(datos);
+			// -----------------------------------------------------------------------------------------------------------------------
+			System.out.println("\n\nBienvenido al programa de sorts");
+			System.out.println("1. BubbleSort");
+			System.out.println("2. GnomeSort");
+			System.out.println("3. QuickSort");
+			System.out.println("4. MergeSort");
+			System.out.println("5. RadixSort");
+			System.out.println("6. Salir\n\n");
 
-            for(int i=0; i< cantidad_numeros; i++){
-                System.out.println(datosG[i]);
-            }
-            
+			opcion = scan.nextInt();
 
-        } else if (opcion == 2){
-            
-            Comparable<Integer>[] datosGn= s.GnomeSort(datos);
+			if (opcion == 1) {
 
-           for(int i=0; i< cantidad_numeros; i++)1{
-            System.out.println(datosGn[i]);
-        }
+				Comparable<Integer>[] datosG = s.BubbleSort(datos);
 
-        } else if (opcion == 3){
-            Comparable<Integer>[] datosQ= s.QuickSort(datos);
+				for (int i = 0; i < cantidad_numeros; i++) {
+					System.out.println(datosG[i]);
+				}
 
-           for(int i=0; i< cantidad_numeros; i++){
-            System.out.println(datosQ[i]);
-        }
+			} else if (opcion == 2) {
 
-        } else if (opcion == 4){
-            
-        } else if (opcion == 5){
-           
+				Comparable<Integer>[] datosGn = s.GnomeSort(datos);
 
-        } else if (opcion == 6){
-            scan.close(); //cierra ciclo
-            System.out.println("Ha cerrado el programa :)");
+				for (int i = 0; i < cantidad_numeros; i++) {
+					System.out.println(datosGn[i]);
+				}
 
-        }else{
-            System.out.println("La opciÃ³n es incorrecta");
-        }
+			} else if (opcion == 3) {
+				Comparable<Integer>[] datosQ = s.QuickSort(datos);
 
-    }
-}
+				for (int i = 0; i < cantidad_numeros; i++) {
+					System.out.println(datosQ[i]);
+				}
+
+			} else if (opcion == 4) {
+				Comparable<Integer>[] datosMs = s.MergeSort(datos);
+
+				for (int i = 0; i < cantidad_numeros; i++) {
+					System.out.println(datosMs[i]);
+				}
+
+			} else if (opcion == 5) {
+				Comparable<Integer>[] datosRs = s.RadixSort(datos);
+
+				for (int i = 0; i < cantidad_numeros; i++) {
+					System.out.println(datosRs[i]);
+				}
+			} else if (opcion == 6) {
+				scan.close(); // cierra ciclo
+				System.out.println("Ha cerrado el programa :)");
+
+			} else {
+				System.out.println("La opción es incorrecta");
+			}
+
+		}
+	}
 }
